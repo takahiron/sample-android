@@ -25,4 +25,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check runs
-        run: each "environment ${ env.environment}, varsion ${ env.version }"
+        run: each "environment ${ environment}, varsion ${ version }"
