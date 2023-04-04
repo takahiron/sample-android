@@ -1,0 +1,28 @@
+name: deploy to deploygate
+
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        type: choice
+        required: true
+        description: which one do you use?
+        options:
+          - A
+          - B
+          - C
+      version:
+        type: string
+        required: true
+        description: release version
+
+env:
+  ENVIRONMENT: ${{ inputs.environment }}
+  VERSION: ${{ inputs.version }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check runs
+        run: echo "environment ${{ env.ENVIRONMENT }}, version ${{ env.VERSION }}"
