@@ -17,12 +17,12 @@ on:
         description: release version
 
 env:
-  environment: ${{ inputs.environment }}
-  version: ${{ inputs.version }}
+  ENVIRONMENT: ${{ inputs.environment }}
+  VERSION: ${{ inputs.version }}
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Check runs
-        run: echo "environment ${{ environment }}, version ${{ env.version }}"
+        run: echo "environment ${{ ENVIRONMENT }}, version ${{ env.VERSION }}"
