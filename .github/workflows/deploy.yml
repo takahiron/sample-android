@@ -25,4 +25,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check runs
-        run: each "environment"
+        run: echo "environment ${{ environment }}, version ${{ env.version }}"
