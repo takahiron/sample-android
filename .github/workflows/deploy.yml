@@ -49,4 +49,4 @@ jobs:
             -H "Authorization: token ${{secrets.DEPLOYGATE_API_TOKEN}}" \
             -F "file=@app/build/outputs/apk/release/app-release-unsigned.apk" \
             -F "message=test" \
-            -v "https://deploygate.com/api/users/${{secrets.DEPLOYGATE_API_TOKEN}}/apps"
+            -v "https://deploygate.com/api/users/odzbdadd100/apps"
