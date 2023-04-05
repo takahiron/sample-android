@@ -44,10 +44,13 @@ jobs:
      - name: Build App Bundle
        run: ./gradlew assembleRelease
      - name: Found App
-       run: ls app/build/outputs/apk/release/app-release-unsigned.apk
+       run: |
+         ls app/build/outputs/apk/release/app-release-unsigned.apk \
+         curl -V
      - name: deploygate
        run: |
          curl \
+            --http2 \
             -H "Authorization: token ${{secrets.DEPLOYGATE_API_TOKEN}}" \
             -F "file=@app/build/outputs/apk/release/app-release-unsigned.apk" \
             -F "message=test" \
