@@ -43,6 +43,8 @@ jobs:
          check-latest: true
      - name: Build App Bundle
        run: ./gradlew assembleRelease
+     - name: Found App
+       run: ls app/build/outputs/apk/release/app-release-unsigned.apk
      - name: deploygate
        run: |
          curl \
