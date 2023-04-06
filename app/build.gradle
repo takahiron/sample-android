@@ -16,16 +16,16 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-    flavorDimension "environment"
+    flavorDimensions "environment"
     productFlavors {
-        test {
+        prod {
             versionCode 22
             versionName "2.3.4"
         }
     }
     signingConfigs {
-        relrease {
-            storeFile file("./release.keystore")
+        release {
+            storeFile file("../release.keystore")
             storePassword System.getenv("RELEASE_STORE_PASSWORD")
             keyAlias System.getenv("RELEASE_KEY_ALIAS")
             keyPassword System.getenv("RELEASE_KEY_PASSWORD")
@@ -34,7 +34,9 @@ android {
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
