@@ -62,7 +62,8 @@ jobs:
          echo 'export RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}' >> ~/.bash_profile \
          echo 'export RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}' >> ~/.bash_profile \
          echo 'export TEST=aaaaaa' >> ~/.bash_profile \
-         source ~/.bash_profile
+         source ~/.bash_profile \
+         echo $TEST
      - name: check environment
        run: |
          echo $RELEASE_STORE_PASSWORD \
