@@ -68,7 +68,7 @@ jobs:
          echo $RELEASE_STORE_PASSWORD \
          echo $RELEASE_KEY_ALIAS \
          echo $RELEASE_KEY_PASSWORD \
-         each $TEST
+         echo $TEST
 #      - name: Build App Bundle
 #        run: ./gradlew assembleRelease
 #      - name: deploygate
