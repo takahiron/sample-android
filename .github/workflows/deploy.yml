@@ -41,7 +41,7 @@ jobs:
          ref: ${{ github.base_ref }}
      - name: set version_name and version_code
        run: |
-         ls \
+         pwd \
          sed -i "" -e "/versionName/s/[0-9]*\.[0-9]*/${{ inputs.version_name }}/" ./app/build.gradle \
          sed -i "" -e "/versionCode/s/[0-9]*\.[0-9]*/${{ inputs.version_code }}/" ./app/build.gradle \
          git diff app/guild.gradle
