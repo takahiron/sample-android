@@ -11,10 +11,14 @@ on:
           - A
           - B
           - C
-      version:
+      version_name:
         type: string
         required: true
-        description: release version
+        description: release version name
+      version_code:
+        type: int
+        required: true
+        description: release version code
 
 env:
   ENVIRONMENT: ${{ inputs.environment }}
@@ -35,18 +39,25 @@ jobs:
      - uses: actions/checkout@v3
        with:
          ref: ${{ github.base_ref }}
-     - name: set up JDK 11
-       uses: actions/setup-java@v2
-       with:
-         distribution: 'temurin'
-         java-version: '11'
-         check-latest: true
-     - name: Build App Bundle
-       run: ./gradlew assembleRelease
-     - name: deploygate
+     - name: set version_name and version_code
        run: |
-         curl \
-            -H "Authorization: token ${{secrets.DEPLOYGATE_API_TOKEN}}" \
-            -F "file=@app/build/outputs/apk/release/app-release-unsigned.apk" \
-            -F "message=test" \
-            -v "https://deploygate.com/api/users/${{ secrets.DEPLOYGATE_USER }}/apps"
+         sed -i "" -e "/versionName/s/[0-9]*\.[0-9]*/${{ inputs.version_name }}/" ./app/build.gradle \
+         sed -i "" -e "/versionCode/s/[0-9]*\.[0-9]*/${{ inputs.version_code }}/" ./app/build.gradle \
+         git diff app/guild.gradle
+#      - name: set up JDK 11
+#        uses: actions/setup-java@v3
+#        with:
+#          distribution: 'temurin'
+#          java-version: '11'
+#          check-latest: true
+#      - name: make gradlew executed
+#        run: chmod +x ./gradlew
+#      - name: Build App Bundle
+#        run: ./gradlew assembleRelease
+#      - name: deploygate
+#        run: |
+#          curl \
+#             -H "Authorization: token ${{secrets.DEPLOYGATE_API_TOKEN}}" \
+#             -F "file=@app/build/outputs/apk/release/app-release-unsigned.apk" \
+#             -F "message=test" \
+#             -v "https://deploygate.com/api/users/${{ secrets.DEPLOYGATE_USER }}/apps"
