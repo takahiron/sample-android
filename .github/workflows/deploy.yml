@@ -64,7 +64,9 @@ jobs:
          echo 'export TEST=aaaaaa' >> ~/.bash_profile \
          source ~/.bash_profile
      - name: check environment
-       run: echo "test $TEST"
+       run: |
+         echo "test $TEST" \
+         le -alh
        env:
          TEST: "aaaa"
 #      - name: Build App Bundle
