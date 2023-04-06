@@ -11,16 +11,16 @@ android {
         applicationId "com.example.sampleandroid"
         minSdk 26
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+            versionCode Integer.parseInt(System.getenv("VERSION_CODE") ?: "1")
+            versionName System.getenv("VERSION_NAME") ?: "0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     flavorDimensions "environment"
     productFlavors {
         prod {
-            versionCode 22
-            versionName "2.3.4"
+            versionCode Integer.parseInt(System.getenv("VERSION_CODE") ?: "2")
+            versionName System.getenv("VERSION_NAME") ?: "1.1"
         }
     }
     signingConfigs {
