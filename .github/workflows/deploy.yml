@@ -62,10 +62,11 @@ jobs:
          echo 'export RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}' >> ~/.bash_profile \
          echo 'export RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}' >> ~/.bash_profile \
          echo 'export TEST=aaaaaa' >> ~/.bash_profile \
-         source ~/.bash_profile \
-         echo $TEST
+         source ~/.bash_profile
      - name: check environment
-       run: echo $TEST
+       run: echo "test $TEST"
+       env:
+         TEST: "aaaa"
 #      - name: Build App Bundle
 #        run: ./gradlew assembleRelease
 #      - name: deploygate
