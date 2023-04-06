@@ -22,7 +22,6 @@ on:
 
 env:
   ENVIRONMENT: ${{ inputs.environment }}
-  VERSION: ${{ inputs.version }}
 
 jobs:
 #   test:
@@ -59,14 +58,17 @@ jobs:
        run: echo '${{ secrets.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
      - name: set export
        run: |
-         echo 'export RELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}' \
-         echo 'export RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}' \
-         echo 'export RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}'
+         echo 'export RELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}' >> ~/.bash_profile \
+         echo 'export RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}' >> ~/.bash_profile \
+         echo 'export RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}' >> ~/.bash_profile \
+         echo 'export TEST=aaaaaa' >> ~/.bash_profile \
+         source ~/.bash_profile
      - name: check environment
        run: |
          echo $RELEASE_STORE_PASSWORD \
          echo $RELEASE_KEY_ALIAS \
-         echo $RELEASE_KEY_PASSWORD
+         echo $RELEASE_KEY_PASSWORD \
+         each $TEST
 #      - name: Build App Bundle
 #        run: ./gradlew assembleRelease
 #      - name: deploygate
