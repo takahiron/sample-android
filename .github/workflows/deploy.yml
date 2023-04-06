@@ -22,6 +22,8 @@ on:
 
 env:
   ENVIRONMENT: ${{ inputs.environment }}
+  VERSION_NAME: ${{ inputs.version_name }}
+  VERSION_CODE: ${{ inputs.version_code }}
   RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
   RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
   RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
@@ -59,11 +61,6 @@ jobs:
 #        run: chmod +x ./gradlew
      - name: set keystore
        run: echo '${{ secrets.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
-     - name: check environment
-       run: |
-         echo "test $TEST" \
-         echo "test2 $TEST2" \
-         ls -alh
 #      - name: Build App Bundle
 #        run: ./gradlew assembleRelease
 #      - name: deploygate
