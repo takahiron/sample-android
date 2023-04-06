@@ -56,12 +56,12 @@ jobs:
 #      - name: make gradlew executed
 #        run: chmod +x ./gradlew
      - name: set keystore
-       run: echo '${{ secret.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
+       run: echo '${{ secrets.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
      - name: set export
        run: |
-         echo 'export RELEASE_STORE_PASSWORD=${{.secret.RELEASE_STORE_PASSWORD }}' \
-         echo 'export RELEASE_KEY_ALIAS=${{.secret.RELEASE_KEY_ALIAS }}' \
-         echo 'export RELEASE_KEY_PASSWORD=${{.secret.RELEASE_KEY_PASSWORD }}'
+         echo 'export RELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}' \
+         echo 'export RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}' \
+         echo 'export RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}'
      - name: check environment
        run: |
          echo $RELEASE_STORE_PASSWORD \
