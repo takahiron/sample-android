@@ -56,16 +56,12 @@ jobs:
 #        run: chmod +x ./gradlew
      - name: set keystore
        run: echo '${{ secrets.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
-     - name: set export
-       run: |
-         echo 'export RELEASE_STORE_PASSWORD=${{ secrets.RELEASE_STORE_PASSWORD }}' >> ~/.bash_profile \
-         echo 'export RELEASE_KEY_ALIAS=${{ secrets.RELEASE_KEY_ALIAS }}' >> ~/.bash_profile \
-         echo 'export RELEASE_KEY_PASSWORD=${{ secrets.RELEASE_KEY_PASSWORD }}' >> ~/.bash_profile \
-         echo 'export TEST=aaaaaa' >> ~/.bash_profile \
-         source ~/.bash_profile
+       env:
+         TEST2: "bbbb"
      - name: check environment
        run: |
          echo "test $TEST" \
+         echo "test2 $TEST2" \
          le -alh
        env:
          TEST: "aaaa"
@@ -78,3 +74,7 @@ jobs:
 #             -F "file=@app/build/outputs/apk/release/app-release-unsigned.apk" \
 #             -F "message=test" \
 #             -v "https://deploygate.com/api/users/${{ secrets.DEPLOYGATE_USER }}/apps"
+#        env:
+#          RELEASE_STORE_PASSWORD: ${{ secrets.RELEASE_STORE_PASSWORD }}
+#          RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
+#          RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
