@@ -44,12 +44,12 @@ jobs:
        with:
          ref: ${{ github.base_ref }}
      - name: set version_name and version_code
+       run: echo ${env.VERSION_NAME}
        uses: Devofure/advance-android-version-actions@v1.4
        with:
          gradlePath: app/build.gradle
          versionName: ${{ inputs.version_name }}
          versionCode: ${{ inputs.version_code }}
-       run: echo ${env.VERSION_NAME}
      - name: confirm version_name and version_code
        run: git diff
 #      - name: set up JDK 11
