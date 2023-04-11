@@ -51,7 +51,6 @@ jobs:
          versionCode: ${{ inputs.version_code }}
      - name: confirm version_name and version_code
        run: |
-         git diff \
          echo "aaaaaa"
        env:
          VERSION: ${{ env.VERSION_NAME }}
