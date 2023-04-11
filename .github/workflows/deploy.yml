@@ -52,7 +52,9 @@ jobs:
      - name: confirm version_name and version_code
        run: |
          git diff \
-         echo ${env.VERSION_NAME}
+         echo ${VERSION}
+       env:
+         VERSION: ${{ env.VERSION_NAME }}
 #      - name: set up JDK 11
 #        uses: actions/setup-java@v3
 #        with:
