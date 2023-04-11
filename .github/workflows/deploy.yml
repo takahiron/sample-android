@@ -79,7 +79,7 @@ jobs:
         with:
           payload: |
             {
-              "text": "github actions: status ${{ job.status}} : environment: ${{ ENVIRONMENT }}, versions: ${{ VERSION_NAME }} (${{ inputs.version_code }})"
+              "text": "github actions: status ${{ job.status}} : environment: ${{ env.ENVIRONMENT }}, versions: ${{ env.VERSION_NAME }} (${{ inputs.version_code }})"
             }
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
