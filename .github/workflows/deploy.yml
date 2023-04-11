@@ -65,7 +65,7 @@ jobs:
      - name: set keystore
        run: echo '${{ secrets.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
      - name: Build App Bundle
-       run: ./gradlew assemble${ ENV }
+       run: ./gradlew assemble$ENV
        env:
          ENV: ${{ env.ENVIRONMENT }}
      - name: deploygate
