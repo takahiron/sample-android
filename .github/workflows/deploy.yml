@@ -15,7 +15,7 @@ on:
         required: true
         description: release version name
       version_code:
-        type: string
+        type: number
         required: true
         description: release version code
 
