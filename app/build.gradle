@@ -11,16 +11,32 @@ android {
         applicationId "com.example.sampleandroid"
         minSdk 26
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
+            versionCode Integer.parseInt(System.getenv("VERSION_CODE") ?: "1")
+            versionName System.getenv("VERSION_NAME") ?: "0.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
+    flavorDimensions "environment"
+    productFlavors {
+        prod {
+            versionCode Integer.parseInt(System.getenv("VERSION_CODE") ?: "2")
+            versionName System.getenv("VERSION_NAME") ?: "1.1"
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file("../release.keystore")
+            storePassword System.getenv("RELEASE_STORE_PASSWORD")
+            keyAlias System.getenv("RELEASE_KEY_ALIAS")
+            keyPassword System.getenv("RELEASE_KEY_PASSWORD")
+        }
+    }
     buildTypes {
         release {
             minifyEnabled false
+            debuggable false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
     compileOptions {
