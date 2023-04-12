@@ -40,11 +40,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
-       with:
-         ref: ${{ github.base_ref }}
      - name: confirm version_name and version_code
        run: |
          git diff
+         
          echo $REF
          echo $ENV
        env:
