@@ -47,7 +47,7 @@ jobs:
         if: ${{ inputs.environment }} == 'RELEASE'
       - name: setting env
         id: setting-env
-        run: echo "env=$ENV"
+        run: echo "env=$ENV_1"
   deploy:
     runs-on: ubuntu-latest
     needs: environment
