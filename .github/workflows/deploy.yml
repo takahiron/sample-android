@@ -40,6 +40,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       GRADLE: ${{steps.setting-env.outputs.env}}
+      SECRET: ${{steps.setting-env.outputs.SECRET}}
     steps:
       - run: echo "VERSION_NAME=22222.2"
       - run: echo "ENV_1=assembleDebug" >> $GITHUB_ENV
@@ -70,6 +71,8 @@ jobs:
        run: chmod +x ./gradlew
      - name: set keystore
        run: echo "$SECRET" | base64 -d > ./release.keystore
+       env:
+         SECRET: ${{ needs.environment.outputs.SECRET }}
      - name: Build App Bundle
        run: ./gradlew $ENV
        env:
