@@ -42,10 +42,10 @@ jobs:
       GRADLE: ${{steps.setting-env.outputs.}}
     steps:
       - name: setting env
-        if: ${{ inputs.environment }} == 'DUBUG'
       - run: echo "ENV_1=assembleDebug"
-        if: ${{ inputs.environment }} == 'RELEASE'
+        if: ${{ inputs.environment }} == 'DUBUG'
       - run: echo "ENV_1=assembleRelease"
+        if: ${{ inputs.environment }} == 'RELEASE'
       - id: setting-env
         run: echo "env=$ENV"
   deploy:
