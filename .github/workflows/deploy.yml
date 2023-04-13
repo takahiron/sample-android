@@ -41,13 +41,13 @@ jobs:
     outputs:
       GRADLE: ${{steps.setting-env.outputs.env}}
     steps:
-      - run: echo "ENV_1=assembleDebug"
+      - run: echo "ENV_1=assembleDebug" >> $GITHUB_ENV
         if: ${{ inputs.environment }} == 'DUBUG'
-      - run: echo "ENV_1=assembleRelease"
+      - run: echo "ENV_1=assembleRelease" >> $GITHUB_ENV
         if: ${{ inputs.environment }} == 'RELEASE'
       - name: setting env
         id: setting-env
-        run: echo "env=$ENV_1"
+        run: echo "env=$ENV_1" >> $GITHUB_OUTPUT
   deploy:
     runs-on: ubuntu-latest
     needs: environment
