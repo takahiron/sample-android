@@ -39,7 +39,7 @@ jobs:
   environment:
     runs-on: ubuntus-latest
     outputs:
-      GRADLE: ${{steps.setting-env.outputs.}}
+      GRADLE: ${{steps.setting-env.outputs.env}}
     steps:
       - run: echo "ENV_1=assembleDebug"
         if: ${{ inputs.environment }} == 'DUBUG'
