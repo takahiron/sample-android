@@ -51,7 +51,7 @@ jobs:
         id: setting-env
         run: |
           echo "env=$ENV_1" >> $GITHUB_OUTPUT
-          echo "SECRET=aaaaaaaaaaa"  >> $GITHUB_OUTPUT
+          echo "SECRET=${{ secrets.RELEASE_SECRET_KEY }}"  >> $GITHUB_OUTPUT
 #          echo "SECRET=${{ secrets.RELEASE_SECRET_KEY }}"  >> $GITHUB_OUTPUT
   deploy:
     runs-on: ubuntu-latest
