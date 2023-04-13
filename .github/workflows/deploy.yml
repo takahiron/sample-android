@@ -50,7 +50,7 @@ jobs:
         id: setting-env
         run: |
           echo "env=$ENV_1" >> $GITHUB_OUTPUT
-          echo '${{ secrets.$ENVIRONMENT_SECRET_KEY }}' | base64 -d > ./release.keystore
+          echo '${{ secrets.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
   deploy:
     runs-on: ubuntu-latest
     needs: environment
@@ -70,7 +70,7 @@ jobs:
 #      - name: make gradlew executed
 #        run: chmod +x ./gradlew
 #      - name: set keystore
-#        run: echo '${{ secrets.$ENVIRONMENT_SECRET_KEY }}' | base64 -d > ./release.keystore
+#        run: echo '${{ secrets.RELEASE_SECRET_KEY }}' | base64 -d > ./release.keystore
 #      - name: Build App Bundle
 #        run: ./gradlew assemble$ENV
 #        env:
