@@ -37,7 +37,7 @@ jobs:
 #        with:
 #          java-version: 1.8
   environment:
-    runs-on: ubuntus-latest
+    runs-on: ubuntu-latest
     outputs:
       GRADLE: ${{steps.setting-env.outputs.env}}
     steps:
