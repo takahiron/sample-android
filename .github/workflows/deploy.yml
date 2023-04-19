@@ -54,10 +54,10 @@ jobs:
         run: |
           echo "env=$ENV_1" >> $GITHUB_OUTPUT
           echo "SECRET=${{ secrets.RELEASE_SECRET_KEY }}"  >> $GITHUB_OUTPUT
-          echo "$env"
+          echo $GITHUB_OUTPUT
           echo "$SECRET" > ./aaaa.txt
-          echo ls -alh
-          echo cat aaaa.txt
+          ls -alh
+          cat aaaa.txt
 #          echo "SECRET=${{ secrets.RELEASE_SECRET_KEY }}"  >> $GITHUB_OUTPUT
   deploy:
     runs-on: ubuntu-latest
