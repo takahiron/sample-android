@@ -43,12 +43,10 @@ jobs:
       SECRET: ${{steps.setting-env.outputs.SECRET}}
     steps:
       - run: echo "VERSION_NAME=22222.2"
-      - name: debug env
-        if: ${{ inputs.environment }} == 'DUBUG'
-        run: echo "ENV_1=assembleDebug" >> $GITHUB_ENV
-      - name: release env
+      - run: echo "ENV_1=assembleDebug" >> $GITHUB_ENV
+        if: ${{ inputs.environment }} == 'DEBUG'
+      - run: echo "ENV_1=assembleRelease" >> $GITHUB_ENV
         if: ${{ inputs.environment }} == 'RELEASE'
-        run: echo "ENV_1=assembleRelease" >> $GITHUB_ENV
       - name: setting env
         id: setting-env
         run: |
