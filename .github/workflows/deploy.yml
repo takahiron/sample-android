@@ -56,8 +56,8 @@ jobs:
           echo "SECRET=${{ secrets.RELEASE_SECRET_KEY }}"  >> $GITHUB_OUTPUT
           echo $GITHUB_OUTPUT
           pwd
-          echo $env
-          echo "$env" > ./ccc.txt
+          echo $ENV_1
+          echo "$ENV_1" > ./ccc.txt
           echo "$SECRET" > ./aaaa.txt
           echo "test" > ./bbbb.txt
           ls -alh
@@ -68,7 +68,7 @@ jobs:
         run: |
           echo "$SECRET"
           cat aaaa.txt
-          echo "$env"
+          echo "$ENV_1"
           cat ccc.txt
 #          echo "SECRET=${{ secrets.RELEASE_SECRET_KEY }}"  >> $GITHUB_OUTPUT
   deploy:
