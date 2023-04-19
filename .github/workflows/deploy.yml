@@ -44,10 +44,10 @@ jobs:
     steps:
       - run: echo "VERSION_NAME=22222.2"
       - name: debug
-        if: ${{ inputs.environment }} == 'DEBUG'
+        if: ${{ inputs.environment == 'DEBUG' }}
         run: echo "ENV_1=assembleDebug" >> $GITHUB_ENV
       - name: release
-        if: ${{ inputs.environment }} == 'RELEASE'
+        if: ${{ inputs.environment == 'RELEASE' }}
         run: echo "ENV_1=assembleRelease" >> $GITHUB_ENV
       - name: setting env
         id: setting-env
@@ -66,10 +66,10 @@ jobs:
          echo "${{ needs.environment.outputs.SECRET }}"
          echo "$VERSION_NAME"
      - name: environment Release
-       if: ${{ inputs.environment }} == 'RELEASE'
+       if: ${{ inputs.environment == 'RELEASE' }}
        run: echo "RELEASE environment"
      - name: environment Debug
-       if: ${{ inputs.environment }} == 'DEBUG'
+       if: ${{ inputs.environment == 'DEBUG' }}
        run: echo "DEBUG environment"
 #      - name: set up JDK 11
 #        uses: actions/setup-java@v3
