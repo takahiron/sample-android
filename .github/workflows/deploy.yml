@@ -40,8 +40,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
      - uses: actions/checkout@v3
-       with:
-         ref: ${{ github.base_ref }}
      - name: confirm version_name and version_code
        run: |
          git diff
@@ -69,7 +67,7 @@ jobs:
          curl \
             -H "Authorization: token ${{secrets.DEPLOYGATE_API_TOKEN}}" \
             -F "file=@app/build/outputs/apk/prod/release/app-prod-release.apk" \
-            -F "message=test" \
+            -F "message=[Github Actions] 試験中" \
             -v "https://deploygate.com/api/users/${{ secrets.DEPLOYGATE_USER }}/apps"
   notice:
     runs-on: ubuntu-latest
