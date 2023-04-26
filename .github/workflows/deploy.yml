@@ -64,8 +64,10 @@ jobs:
          ENV: ${{ env.ENVIRONMENT }}
      - name: check aab
        run: |
-         ls -alh app/build/outputs/bundle/release/app-release.aab
+         ls -alh app/build/outputs/
          ls -alh app/build/outputs/bundle/
+         ls -alh app/build/outputs/bundle/release/
+         ls -alh app/build/outputs/bundle/release/app-release.aab
      - name: deploygate
        run: |
          curl \
