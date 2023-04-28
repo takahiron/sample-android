@@ -77,7 +77,7 @@ jobs:
     steps:
      - uses: actions/checkout@v3
        with:
-         repository: "origin/develop"
+         ref: "develop"
      - name: check repository
        run: git branch
 #      - name: confirm version_name and version_code
