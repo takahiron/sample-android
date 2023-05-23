@@ -64,13 +64,17 @@ jobs:
        run: |
          ls app/build/outputs/bundle/
          ls app/build/outputs/bundle/prodRelease/app-prod-release.aab
-#      - name: Release
-#        uses: r0adkll/upload-google-play@v1
-#        with:
-#          releaseFiles: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-#          serviceAccountJsonPlainText: ./service-account.json
-#          packageName: com.example.sampleandroid
-#          track: bate
+     - name: export service account
+       run: echo -n "$SERVICE_ACCOUNT_JSON" | base64 -d > ./sercice-account.json
+       env:
+         SERVICE_ACCOUNT_JSON: ${{ secrets.SERVICE_ACCOUNT_JSON}}
+     - name: Release
+       uses: r0adkll/upload-google-play@v1
+       with:
+         releaseFiles: app/build/outputs/bundle/prodRelease/app-prod-release.aab
+         serviceAccountJson: ./service-account.json
+         packageName: com.example.sampleandroid
+         track: bate
   notice:
     runs-on: ubuntu-latest
     needs: 
