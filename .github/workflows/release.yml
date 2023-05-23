@@ -54,11 +54,7 @@ jobs:
        run: echo ${{ secrets.RELEASE_SECRET_KEY }} | base64 -d > ./release.keystore
      - name: Build aab
        run: |
-         ./gradlew bundle$ENV \
-         -Pandroid.injected.signing.store.file='./release.keystore' \
-         -Pandroid.injected.signing.store.password=$RELEASE_STORE_PASSWORD \
-         -Pandroid.injected.signing.key.alias=$RELEASE_KEY_ALIAS \
-         -Pandroid.injected.signing.key.password=$RELEASE_KEY_PASSWORD
+         ./gradlew bundle$ENV
        env:
          ENV: ${{ env.ENVIRONMENT }}
          RELEASE_STORE_PASSWORD: ${{ env.RELEASE_STORE_PASSWORD }}
