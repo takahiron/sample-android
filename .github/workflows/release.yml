@@ -21,10 +21,12 @@ on:
 #   RELEASE_KEY_ALIAS: ${{ secrets.RELEASE_KEY_ALIAS }}
 #   RELEASE_KEY_PASSWORD: ${{ secrets.RELEASE_KEY_PASSWORD }}
 
-# jobs:
-#   test:
-#     runs-on: ubuntu-latest
-#     steps:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+       - name: test
+         run: echo aaaa
 #      - uses: actions/checkout@v1
 #      - name: set up JDK 1.8
 #        uses: actions/setup-java@v1
