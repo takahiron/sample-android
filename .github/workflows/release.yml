@@ -1,5 +1,4 @@
 name: release
-run-name: release ${{ inputs.version_name }} (${{ inputs.version_code }} ) ${{ env.ENVIRONMENT }}
 
 on:
   workflow_dispatch:
@@ -12,6 +11,8 @@ on:
         type: number
         required: true
         description: release version code
+
+run-name: release ${{ inputs.version_name }} (${{ inputs.version_code }} ) ${{ env.ENVIRONMENT }}
 
 env:
   ENVIRONMENT: 'Release'
