@@ -64,10 +64,10 @@ jobs:
          RELEASE_STORE_PASSWORD: ${{ env.RELEASE_STORE_PASSWORD }}
          RELEASE_KEY_ALIAS: ${{ env.RELEASE_KEY_ALIAS }}
          RELEASE_KEY_PASSWORD: ${{ env.RELEASE_KEY_PASSWORD }}
-       - name: check aab
-         run: |
-           ls app/build/outputs/bundle/
-           ls app/build/outputs/bundle/prodRelease/app-prod-release.aab
+     - name: check aab
+       run: |
+         ls app/build/outputs/bundle/
+         ls app/build/outputs/bundle/prodRelease/app-prod-release.aab
 #      - name: Release
 #        uses: r0adkll/upload-google-play@v1
 #        with:
