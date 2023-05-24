@@ -79,6 +79,24 @@ jobs:
         run: |
           echo ${{ github.ref }}
           echo ${{ github.ref_name }}
+      - name: check branch
+        if: startWith(${{ github.ref_name }}, 'dev')
+        run: echo "check branch dev"
+      - name: check not branch
+        if: startWith(${{ github.ref_name }}, 'org')
+        run: echo "check not branch dev"
+      - name: force end
+        run: exit 0
+      - name: not end
+        run: echo "aaaaa"
+      - name: catch error
+        if: failure()
+        run: echo "failure"
+  deploy2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test
+        run: echo "aaaaffffeeegg"
 #      - uses: actions/checkout@v3
 #      - name: confirm version_name and version_code
 #        run: |
