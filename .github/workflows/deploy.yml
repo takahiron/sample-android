@@ -80,10 +80,10 @@ jobs:
           echo ${{ github.ref }}
           echo ${{ github.ref_name }}
       - name: check branch
-        if: startWith("develop", 'dev')
+        if: startsWith("develop", 'dev')
         run: echo "check branch dev"
       - name: check not branch
-        if: startWith("develop", 'org')
+        if: startsWith("develop", 'org')
         run: echo "check not branch dev"
       - name: force end
         run: exit 0
