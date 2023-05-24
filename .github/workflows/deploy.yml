@@ -73,6 +73,7 @@ jobs:
 #          echo "SECRET=${{ secrets.RELEASE_SECRET_KEY }}"  >> $GITHUB_OUTPUT
   deploy:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref_name, 'dev')
 #    needs: environment
     steps:
       - name: display branch
@@ -94,6 +95,7 @@ jobs:
         run: echo "failure"
   deploy2:
     runs-on: ubuntu-latest
+    if: startsWith(github.ref_name, 'org')
     needs: deploy
     steps:
       - name: test
