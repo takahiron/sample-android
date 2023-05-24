@@ -76,7 +76,9 @@ jobs:
 #    needs: environment
     steps:
       - name: display branch
-        run: echo ${{ github.ref }}
+        run: |
+          echo ${{ github.ref }}
+          echo ${{ github.ref_name }}
 #      - uses: actions/checkout@v3
 #      - name: confirm version_name and version_code
 #        run: |
